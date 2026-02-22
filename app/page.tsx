@@ -120,16 +120,20 @@ export default function Home() {
       Proyectos <span className="text-lime-400">Destacados</span>
     </motion.h2>
 
-    {/* Cambié md:grid-cols-2 a md:grid-cols-3 para que los 3 se vean bien en una fila */}
     <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
        
-      {/* Proyecto 1: Erika Muñoz (Sitio Real) */}
+      {/* Proyecto 1: Erika Muñoz */}
       <motion.div 
         whileHover={{ y: -10 }}
         className="group relative overflow-hidden rounded-3xl border border-white/5 bg-zinc-900/50"
       >
-        <div className="relative h-64 w-full">
-          <Image src="/abogada.png" alt="Erika Muñoz Abogada" fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+        <div className="relative h-64 w-full overflow-hidden">
+          <Image 
+            src="/abogada.png" 
+            alt="Erika Muñoz Abogada" 
+            fill 
+            className="object-cover transition-all duration-500 grayscale-0 md:grayscale md:group-hover:grayscale-0 md:group-hover:scale-110" 
+          />
         </div>
         <div className="p-8">
           <h3 className="text-xl font-bold mb-2 uppercase italic text-white group-hover:text-lime-400 transition-colors">Erika Muñoz — Legal</h3>
@@ -143,8 +147,13 @@ export default function Home() {
         whileHover={{ y: -10 }}
         className="group relative overflow-hidden rounded-3xl border border-white/5 bg-zinc-900/50"
       >
-        <div className="relative h-64 w-full">
-          <Image src="/azure-bay.jpg" alt="Azure Bay" fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+        <div className="relative h-64 w-full overflow-hidden">
+          <Image 
+            src="/azure-bay.jpg" 
+            alt="Azure Bay" 
+            fill 
+            className="object-cover transition-all duration-500 grayscale-0 md:grayscale md:group-hover:grayscale-0 md:group-hover:scale-110" 
+          />
         </div>
         <div className="p-8">
           <h3 className="text-xl font-bold mb-2 uppercase italic text-white group-hover:text-lime-400 transition-colors">Azure Bay Complex</h3>
@@ -158,8 +167,13 @@ export default function Home() {
         whileHover={{ y: -10 }}
         className="group relative overflow-hidden rounded-3xl border border-white/5 bg-zinc-900/50"
       >
-        <div className="relative h-64 w-full">
-          <Image src="/nova-gear.jpg" alt="Nova Gear" fill className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+        <div className="relative h-64 w-full overflow-hidden">
+          <Image 
+            src="/nova-gear.jpg" 
+            alt="Nova Gear" 
+            fill 
+            className="object-cover transition-all duration-500 grayscale-0 md:grayscale md:group-hover:grayscale-0 md:group-hover:scale-110" 
+          />
         </div>
         <div className="p-8">
           <h3 className="text-xl font-bold mb-2 uppercase italic text-white group-hover:text-lime-400 transition-colors">Tecnología Nova Gear</h3>
@@ -171,6 +185,9 @@ export default function Home() {
     </div>
   </div>
 </section>
+
+
+
 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 py-20">
   <div>
     <h2 className="text-4xl font-black uppercase italic leading-none mb-6">
