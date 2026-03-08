@@ -14,23 +14,19 @@ export default function Home() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-
     const formData = new FormData(e.currentTarget);
     
     try {
       const response = await fetch("https://formspree.io/f/xgolnnra", {
         method: "POST",
         body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
+        headers: { 'Accept': 'application/json' }
       });
 
       if (response.ok) {
         setLoading(false);
         setSubmitted(true);
         formRef.current?.reset();
-        // El mensaje de éxito desaparece tras 5 segundos
         setTimeout(() => setSubmitted(false), 5000);
       } else {
         throw new Error("Error en el envío");
@@ -44,11 +40,12 @@ export default function Home() {
   return (
     <div className="flex min-h-screen flex-col bg-[#0a0b10] font-sans text-white selection:bg-lime-500/30">
       
-      {/* BOTÓN WHATSAPP FLOTANTE */}
+      {/* BOTÓN WHATSAPP FLOTANTE - Optimizado para accesibilidad */}
       <motion.a 
         href="https://wa.me/573113462128"
         target="_blank"
         rel="noopener noreferrer"
+        aria-label="Contactar por WhatsApp"
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         whileHover={{ scale: 1.1 }}
@@ -69,7 +66,7 @@ export default function Home() {
         <div className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto w-full">
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative w-10 h-10 rounded-lg overflow-hidden border border-lime-400/30">
-              <Image src="/logo-neon.jpeg" alt="SmartDicom Logo" fill className="object-cover" />
+              <Image src="/logo-neon.jpeg" alt="SMARTDICOM - Agencia de Desarrollo Web en Colombia" fill className="object-cover" />
             </div>
             <div className="text-xl font-black tracking-tighter uppercase">
               SMART<span className="text-lime-400">DICOM</span>
@@ -78,12 +75,12 @@ export default function Home() {
           <div className="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest text-zinc-400 items-center">
             <a href="#services" className="hover:text-white transition-colors">Servicios</a>
             <a href="#contact" className="hover:text-fuchsia-500 transition-colors">Contacto</a>
-            <a href="https://wa.me/573113462128" className="px-5 py-2 bg-white text-black rounded-full hover:bg-lime-400 transition-all">Cotizar</a>
+            <a href="https://wa.me/573113462128" className="px-5 py-2 bg-white text-black rounded-full hover:bg-lime-400 transition-all">Cotizar Proyecto</a>
           </div>
         </div>
       </motion.nav>
 
-      {/* HERO */}
+      {/* HERO SECTION - H1 Optimizado con Keyword Local */}
       <main className="relative flex flex-col items-center justify-center px-6 py-32 text-center overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-fuchsia-600/10 blur-[120px] rounded-full -z-10" />
         
@@ -92,176 +89,163 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="max-w-4xl text-5xl font-black md:text-8xl leading-none tracking-tight">
-            Sitios Web de <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-emerald-400">Alto Rendimiento</span>
+          <h1 className="max-w-5xl text-5xl font-black md:text-8xl leading-none tracking-tight">
+            Diseño de <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-emerald-400">Sitios Web en Colombia</span>
           </h1>
           <p className="mt-8 text-zinc-400 text-lg md:text-xl max-w-2xl mx-auto">
-            Impulsamos negocios en Colombia con tecnología de punta. 
-            Webs rápidas, seguras y diseñadas para convertir.
+            En SMARTDICOM impulsamos negocios con tecnología de punta. 
+            Creamos experiencias digitales rápidas, seguras y optimizadas para Google.
           </p>
         </motion.div>
 
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="mt-12">
           <a href="#contact" className="group bg-fuchsia-600 hover:bg-fuchsia-500 px-10 py-5 rounded-full font-black text-sm uppercase tracking-widest transition-all flex items-center gap-3 shadow-lg">
-            Empezar Ahora <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            Solicitar Auditoría Web <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </a>
         </motion.div>
       </main>
 
-{/* SECCIÓN DE PORTAFOLIO */}
-<section id="services" className="py-24 px-6 bg-black/20">
-  <div className="max-w-7xl mx-auto">
-    <motion.h2 
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      className="text-3xl font-black mb-12 text-center uppercase tracking-tighter"
-    >
-      Proyectos <span className="text-lime-400">Destacados</span>
-    </motion.h2>
+      {/* SECCIÓN DE PORTAFOLIO - H2 Semántico */}
+      <section id="services" className="py-24 px-6 bg-black/20">
+        <div className="max-w-7xl mx-auto">
+          <motion.h2 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-3xl font-black mb-12 text-center uppercase tracking-tighter"
+          >
+            Nuestros <span className="text-lime-400">Proyectos Destacados</span>
+          </motion.h2>
 
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-       
-      {/* Proyecto 1: Erika Muñoz */}
-      <motion.div 
-        whileHover={{ y: -10 }}
-        className="group relative overflow-hidden rounded-3xl border border-white/5 bg-zinc-900/50"
-      >
-        <div className="relative h-64 w-full overflow-hidden">
-          <Image 
-            src="/abogada.png" 
-            alt="Erika Muñoz Abogada" 
-            fill 
-            className="object-cover transition-all duration-500 grayscale-0 md:grayscale md:group-hover:grayscale-0 md:group-hover:scale-110" 
-          />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            {/* Proyecto 1: Erika Muñoz */}
+            <article className="group relative overflow-hidden rounded-3xl border border-white/5 bg-zinc-900/50">
+              <div className="relative h-64 w-full overflow-hidden">
+                <Image 
+                  src="/abogada.png" 
+                  alt="Diseño web para Erika Muñoz Abogada - Especialista Legal en Colombia" 
+                  fill 
+                  className="object-cover transition-all duration-500 grayscale-0 md:grayscale md:group-hover:grayscale-0 md:group-hover:scale-110" 
+                />
+              </div>
+              <div className="p-8">
+                <h3 className="text-xl font-bold mb-2 uppercase italic text-white group-hover:text-lime-400 transition-colors">Erika Muñoz — Legal</h3>
+                <p className="text-zinc-400 text-sm mb-4">Sitio profesional con embudo de conversión y optimización de marca personal para abogados.</p>
+                <a href="https://erikamunoz.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-[10px] font-black uppercase tracking-widest text-fuchsia-500 hover:text-white transition-colors">Ver Caso de Estudio →</a>
+              </div>
+            </article>
+
+            {/* Proyecto 2: Azure Bay */}
+            <article className="group relative overflow-hidden rounded-3xl border border-white/5 bg-zinc-900/50">
+              <div className="relative h-64 w-full overflow-hidden">
+                <Image 
+                  src="/azure-bay.jpg" 
+                  alt="Plataforma Azure Bay Complex - Desarrollo web inmobiliario de lujo" 
+                  fill 
+                  className="object-cover transition-all duration-500 grayscale-0 md:grayscale md:group-hover:grayscale-0 md:group-hover:scale-110" 
+                />
+              </div>
+              <div className="p-8">
+                <h3 className="text-xl font-bold mb-2 uppercase italic text-white group-hover:text-lime-400 transition-colors">Azure Bay Complex</h3>
+                <p className="text-zinc-400 text-sm mb-4">Plataforma de reservaciones de lujo con arquitectura optimizada para carga ultra rápida.</p>
+                <span className="text-[10px] font-black uppercase tracking-widest text-zinc-600 italic">Concept Design</span>
+              </div>
+            </article>
+
+            {/* Proyecto 3: Nova Gear */}
+            <article className="group relative overflow-hidden rounded-3xl border border-white/5 bg-zinc-900/50">
+              <div className="relative h-64 w-full overflow-hidden">
+                <Image 
+                  src="/nova-gear.jpg" 
+                  alt="E-commerce Nova Gear - Desarrollo de tiendas online en Colombia" 
+                  fill 
+                  className="object-cover transition-all duration-500 grayscale-0 md:grayscale md:group-hover:grayscale-0 md:group-hover:scale-110" 
+                />
+              </div>
+              <div className="p-8">
+                <h3 className="text-xl font-bold mb-2 uppercase italic text-white group-hover:text-lime-400 transition-colors">Tecnología Nova Gear</h3>
+                <p className="text-zinc-400 text-sm mb-4">E-commerce de alta fidelidad con interfaz inmersiva y experiencia de compra optimizada.</p>
+                <span className="text-[10px] font-black uppercase tracking-widest text-zinc-600 italic">E-commerce Design</span>
+              </div>
+            </article>
+          </div>
         </div>
-        <div className="p-8">
-          <h3 className="text-xl font-bold mb-2 uppercase italic text-white group-hover:text-lime-400 transition-colors">Erika Muñoz — Legal</h3>
-          <p className="text-zinc-400 text-sm mb-4">Sitio profesional con embudo de conversión y optimización de marca personal.</p>
-          <a href="https://erikamunoz.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-[10px] font-black uppercase tracking-widest text-fuchsia-500 hover:text-white transition-colors">Ver Sitio En Vivo →</a>
+      </section>
+
+      {/* SECCIÓN VALOR - H2 para "Motor de Ventas" */}
+      <section className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 py-20">
+          <div>
+            <h2 className="text-4xl font-black uppercase italic leading-none mb-6">
+              Tu página web es tu<br/> principal <span className="text-lime-400">Motor de Ventas</span>
+            </h2>
+            <p className="text-zinc-500 mb-8 font-medium">
+              En SMARTDICOM combinamos ingeniería de software y diseño UX en Colombia para 
+              garantizar que cada clic se convierta en una oportunidad real de negocio.
+            </p>
+          </div>
+          
+          <div className="space-y-4">
+            {[
+              { t: 'Posicionamiento y Autoridad', d: 'Aparece en los primeros resultados de Google y destaca frente a tu competencia.' },
+              { t: 'Escalabilidad Digital', d: 'Arquitecturas preparadas para el crecimiento constante de tu empresa.' },
+              { t: 'Ventas 24/7', d: 'Tu negocio nunca cierra. Tu vitrina comercial está disponible cada segundo del día.' },
+              { t: 'Alta Conversión', d: 'Interfaces diseñadas psicológicamente para convertir visitantes en clientes.' }
+            ].map((item, i) => (
+              <div key={i} className="flex gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.05] transition-colors">
+                <div className="text-lime-400 font-black italic">/0{i+1}</div>
+                <div>
+                  <h4 className="text-sm font-black uppercase tracking-widest">{item.t}</h4>
+                  <p className="text-xs text-zinc-500 mt-1">{item.d}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      </motion.div>
+      </section>
 
-      {/* Proyecto 2: Azure Bay */}
-      <motion.div 
-        whileHover={{ y: -10 }}
-        className="group relative overflow-hidden rounded-3xl border border-white/5 bg-zinc-900/50"
-      >
-        <div className="relative h-64 w-full overflow-hidden">
-          <Image 
-            src="/azure-bay.jpg" 
-            alt="Azure Bay" 
-            fill 
-            className="object-cover transition-all duration-500 grayscale-0 md:grayscale md:group-hover:grayscale-0 md:group-hover:scale-110" 
-          />
+      {/* SECCIÓN DE PROCESO */}
+      <section className="py-24 px-6 border-t border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-black italic uppercase mb-16 tracking-tighter text-center">
+            Metodología de <span className="text-lime-400">Desarrollo Web</span>
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            {[
+              { step: '01', title: 'Estrategia SEO', desc: 'Análisis de palabras clave y objetivos.' },
+              { step: '02', title: 'Diseño UX/UI', desc: 'Interfaces modernas y fluidas.' },
+              { step: '03', title: 'Programación', desc: 'Código Next.js limpio y escalable.' },
+              { step: '04', title: 'Optimización', desc: 'Lanzamiento con velocidad máxima.' }
+            ].map((item, i) => (
+              <div key={i} className="p-8 bg-zinc-900/30 rounded-3xl border border-white/5">
+                <span className="text-fuchsia-500 font-black text-4xl italic opacity-50">{item.step}</span>
+                <h3 className="text-xl font-bold uppercase mt-4 mb-2">{item.title}</h3>
+                <p className="text-zinc-500 text-sm">{item.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="p-8">
-          <h3 className="text-xl font-bold mb-2 uppercase italic text-white group-hover:text-lime-400 transition-colors">Azure Bay Complex</h3>
-          <p className="text-zinc-400 text-sm mb-4">Plataforma de reservaciones de lujo con optimización de carga ultra rápida.</p>
-          <span className="text-[10px] font-black uppercase tracking-widest text-zinc-600 italic">Concept Design</span>
+      </section>
+
+      {/* SECCIÓN DE FAQ - H2 con contenido relevante */}
+      <section className="py-24 px-6 bg-white/[0.01]">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-center text-2xl font-black uppercase italic mb-12">Consultas sobre <span className="text-fuchsia-500">Desarrollo Web</span></h2>
+          <div className="space-y-4">
+            <article className="p-6 bg-zinc-900/50 rounded-2xl border border-white/5">
+              <h4 className="font-bold text-sm uppercase mb-2">¿Cómo ayudan al SEO de mi empresa en Colombia?</h4>
+              <p className="text-zinc-500 text-sm">Optimizamos cada línea de código y estructura de datos para que Google indexe tu contenido rápidamente en el mercado colombiano.</p>
+            </article>
+            <article className="p-6 bg-zinc-900/50 rounded-2xl border border-white/5">
+              <h4 className="font-bold text-sm uppercase mb-2">¿Mis clientes podrán ver la web en celulares?</h4>
+              <p className="text-zinc-500 text-sm">Totalmente. Aplicamos diseño Mobile-First para garantizar una experiencia perfecta en cualquier dispositivo.</p>
+            </article>
+          </div>
         </div>
-      </motion.div>
+      </section>
 
-      {/* Proyecto 3: Nova Gear */}
-      <motion.div 
-        whileHover={{ y: -10 }}
-        className="group relative overflow-hidden rounded-3xl border border-white/5 bg-zinc-900/50"
-      >
-        <div className="relative h-64 w-full overflow-hidden">
-          <Image 
-            src="/nova-gear.jpg" 
-            alt="Nova Gear" 
-            fill 
-            className="object-cover transition-all duration-500 grayscale-0 md:grayscale md:group-hover:grayscale-0 md:group-hover:scale-110" 
-          />
-        </div>
-        <div className="p-8">
-          <h3 className="text-xl font-bold mb-2 uppercase italic text-white group-hover:text-lime-400 transition-colors">Tecnología Nova Gear</h3>
-          <p className="text-zinc-400 text-sm mb-4">E-commerce de alta fidelidad con interfaz inmersiva y estética neón.</p>
-          <span className="text-[10px] font-black uppercase tracking-widest text-zinc-600 italic">E-commerce Design</span>
-        </div>
-      </motion.div>
-
-    </div>
-  </div>
-</section>
-
-
-
-<div className="grid grid-cols-1 md:grid-cols-2 gap-12 py-20">
-  <div>
-    <h2 className="text-4xl font-black uppercase italic leading-none mb-6">
-      No es solo una web,<br/> es tu <span className="text-lime-400">Motor de Ventas</span>
-    </h2>
-    <p className="text-zinc-500 mb-8 font-medium">
-      Combinamos ingeniería de software y diseño de experiencia de usuario (UX) para 
-      garantizar que cada clic se convierta en una oportunidad de negocio.
-    </p>
-  </div>
-  
-  <div className="space-y-4">
-    {[
-      { t: 'Autoridad Digital', d: 'Destaca con una imagen de élite frente a tu competencia.' },
-      { t: 'Expansión Global', d: 'Lleva tu negocio a nuevas ciudades y mercados internacionales.' },
-      { t: 'Operación 24/7', d: 'Tu vitrina comercial disponible y vendiendo cada segundo del día.' },
-      { t: 'Conversión de Leads', d: 'Sistemas diseñados específicamente para aumentar tu base de clientes.' }
-    ].map((item, i) => (
-      <div key={i} className="flex gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.05] transition-colors">
-        <div className="text-lime-400 font-black italic">/0{i+1}</div>
-        <div>
-          <h4 className="text-sm font-black uppercase tracking-widest">{item.t}</h4>
-          <p className="text-xs text-zinc-500 mt-1">{item.d}</p>
-        </div>
-      </div>
-    ))}
-  </div>
-</div>
-
-
-{/* SECCIÓN DE PROCESO */}
-<section className="py-24 px-6 border-t border-white/5">
-  <div className="max-w-7xl mx-auto">
-    <h2 className="text-3xl font-black italic uppercase mb-16 tracking-tighter text-center">
-      Metodología de <span className="text-lime-400">Alto Impacto</span>
-    </h2>
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-      {[
-        { step: '01', title: 'Estrategia', desc: 'Definición de objetivos comerciales.' },
-        { step: '02', title: 'Diseño', desc: 'Interfaces intuitivas y modernas.' },
-        { step: '03', title: 'Dev', desc: 'Código limpio y escalable.' },
-        { step: '04', title: 'Go Live', desc: 'Despliegue y optimización final.' }
-      ].map((item, i) => (
-        <div key={i} className="p-8 bg-zinc-900/30 rounded-3xl border border-white/5">
-          <span className="text-fuchsia-500 font-black text-4xl italic opacity-50">{item.step}</span>
-          <h3 className="text-xl font-bold uppercase mt-4 mb-2">{item.title}</h3>
-          <p className="text-zinc-500 text-sm">{item.desc}</p>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
-
-{/* SECCIÓN DE FAQ SIMPLE */}
-<section className="py-24 px-6 bg-white/[0.01]">
-  <div className="max-w-3xl mx-auto">
-    <h2 className="text-center text-2xl font-black uppercase italic mb-12">Preguntas <span className="text-fuchsia-500">Frecuentes</span></h2>
-    <div className="space-y-4">
-      <div className="p-6 bg-zinc-900/50 rounded-2xl border border-white/5">
-        <h4 className="font-bold text-sm uppercase mb-2">¿Trabajas con clientes fuera de Colombia?</h4>
-        <p className="text-zinc-500 text-sm">Sí, desarrollamos proyectos a nivel global con facturación internacional.</p>
-      </div>
-      <div className="p-6 bg-zinc-900/50 rounded-2xl border border-white/5">
-        <h4 className="font-bold text-sm uppercase mb-2">¿Las webs son administrables?</h4>
-        <p className="text-zinc-500 text-sm">Absolutamente. Integramos CMS modernos para que gestiones tu contenido sin tocar código.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-      {/* FORMULARIO DE CONTACTO (FORMSPREE) */}
-      <section id="contact" className="py-24 px-6"  >
+      {/* FORMULARIO DE CONTACTO */}
+      <section id="contact" className="py-24 px-6">
         <motion.div 
           viewport={{ once: true }}
           initial={{ opacity: 0, y: 40 }}
@@ -270,14 +254,15 @@ export default function Home() {
         >
           <div className="mb-12">
             <h2 className="text-4xl font-black mb-2 uppercase italic text-lime-400">Solicitar Propuesta</h2>
-            <p className="text-zinc-500 font-bold uppercase tracking-widest text-xs">Recibe una respuesta personalizada en ceo@smartdicom.com</p>
+            <p className="text-zinc-500 font-bold uppercase tracking-widest text-xs">Agencia de desarrollo web SmartDicom - ceo@smartdicom.com</p>
           </div>
 
           <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="flex flex-col gap-2">
-                <label className="text-[10px] uppercase font-bold text-zinc-600 ml-4">Nombre del Cliente / Empresa</label>
+                <label htmlFor="cliente" className="text-[10px] uppercase font-bold text-zinc-600 ml-4">Nombre o Empresa</label>
                 <input 
+                  id="cliente"
                   name="Cliente" 
                   type="text" 
                   required 
@@ -286,8 +271,9 @@ export default function Home() {
                 />
               </div>
               <div className="flex flex-col gap-2">
-                <label className="text-[10px] uppercase font-bold text-zinc-600 ml-4">Correo Electrónico</label>
+                <label htmlFor="email" className="text-[10px] uppercase font-bold text-zinc-600 ml-4">Correo Electrónico</label>
                 <input 
+                  id="email"
                   name="Email" 
                   type="email" 
                   required 
@@ -297,12 +283,13 @@ export default function Home() {
               </div>
             </div>
             <div className="flex flex-col gap-2">
-              <label className="text-[10px] uppercase font-bold text-zinc-600 ml-4">Detalles del Proyecto</label>
+              <label htmlFor="mensaje" className="text-[10px] uppercase font-bold text-zinc-600 ml-4">Detalles de tu Sitio Web</label>
               <textarea 
+                id="mensaje"
                 name="Mensaje" 
                 required 
                 rows={4} 
-                placeholder="¿Qué tipo de sitio web necesitas y cuáles son tus objetivos?" 
+                placeholder="Cuéntanos sobre tu proyecto y objetivos de negocio..." 
                 className="w-full px-8 py-5 rounded-3xl bg-black/50 border border-white/10 focus:border-lime-400 outline-none transition-all"
               />
             </div>
@@ -319,11 +306,11 @@ export default function Home() {
                     initial={{ scale: 0.8 }} animate={{ scale: 1 }}
                     className="flex items-center justify-center gap-2 text-emerald-600"
                   >
-                    <CheckCircle size={20} /> PROPUESTA ENVIADA
+                    <CheckCircle size={20} /> PROPUESTA ENVIADA CON ÉXITO
                   </motion.div>
                 ) : (
                   <motion.div key="idle" className="flex items-center justify-center gap-2">
-                    {loading ? "ENVIANDO..." : "ENVIAR AHORA"} <Send size={18} />
+                    {loading ? "ENVIANDO SOLICITUD..." : "ENVIAR AHORA"} <Send size={18} />
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -334,7 +321,7 @@ export default function Home() {
 
       <footer className="py-12 text-center border-t border-white/5 opacity-50">
         <p className="text-[10px] font-black uppercase tracking-[0.4em]">
-          © 2026 SMARTDICOM — COLOMBIA
+          © 2026 SMARTDICOM — DESARROLLO WEB DE ALTO RENDIMIENTO EN COLOMBIA
         </p>
       </footer>
     </div>

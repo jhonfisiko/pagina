@@ -12,9 +12,40 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// CONFIGURACIÓN DE SEO COMPLETA
 export const metadata: Metadata = {
-title: "SMARTDICOM | Sitios Web de Alto Rendimiento",
-  description: "Agencia de desarrollo web y estrategias digitales en Colombia.",
+  metadataBase: new URL('https://tusitio.com'), // CAMBIA ESTO POR TU DOMINIO REAL
+  title: {
+    default: "SMARTDICOM | Sitios Web de Alto Rendimiento",
+    template: "%s | SMARTDICOM"
+  },
+  description: "Agencia de desarrollo web y estrategias digitales en Colombia. Expertos en Next.js y optimización de conversión.",
+  keywords: ["Desarrollo web Colombia", "Agencia digital", "Next.js", "Vercel", "SMARTDICOM", "SEO"],
+  authors: [{ name: "SMARTDICOM" }],
+  creator: "SMARTDICOM",
+  publisher: "SMARTDICOM",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    title: "SMARTDICOM | Desarrollo Web de Alto Rendimiento",
+    description: "Creamos soluciones digitales escalables en Colombia.",
+    url: 'https://tusitio.com', // CAMBIA ESTO
+    siteName: 'SMARTDICOM',
+    locale: 'es_CO',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'SMARTDICOM',
+    description: 'Agencia de desarrollo web y estrategias digitales.',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -23,7 +54,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="es"> {/* CAMBIADO A ESPAÑOL */}
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
