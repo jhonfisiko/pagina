@@ -5,8 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: '/private/', // Aquí puedes bloquear carpetas que no quieras en Google
     },
-    sitemap: 'https://tusitio.com/sitemap.xml', // TU DOMINIO
+    sitemap: 'https://smartdicom.com/sitemap.xml', // CAMBIADO: Tu dominio real
   }
 }
